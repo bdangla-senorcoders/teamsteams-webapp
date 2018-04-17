@@ -1,0 +1,8 @@
+{
+    "/teams/*": {
+        "target": "http://138.68.19.227:1337",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin":true
+    }
+}

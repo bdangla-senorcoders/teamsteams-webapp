@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-md-12">
+		<ul>
+    		<li *ngFor="let team of teamList">{{team.name}}</li>
+  		</ul>
+		<h2>TeamSnap Form</h2>
+		<div class="form-group">
+			<select name="teamoption" class="form-control" id="teamoption" (change)="userSelection($event.target.value)">
+				<option value="" selected="">Choose an option</option>
+				<option value="create">Create Team</option>
+				<option value="join">Join Team</option>
+			</select>
+		</div>
+		<div *ngIf="showJoinTeam" class="joinTeam">
+			<form (ngSubmit)="searchTeam()">
+				<div class="form-group">
+					<input type="text" name="teamName" class="form-control" [(ngModel)]="search">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Search</button>
+				</div>
+			</form>
+			<div *ngIf="showSearchResult" class="search-result">
+				<h3>Result for: {{search}}</h3>
+				<ul>
+		    		<li *ngFor="let team of teamList">{{team.name}}</li>
+		  		</ul>
+			</div>
+		</div>
+		<div *ngIf="showCreateTeam" class="createTeam">
+			<h3>Team Info</h3>
+			<form (ngSubmit)="createTeam()" name="myForm">
+				<div class="form-group">
+					<label for="teamName">Team Name</label>
+					<input type="text" class="form-control" id="teamName" [(ngModel)]="team.name" name="teamName" required>
+				</div>
+				<div class="form-group">
+					<label for="zipcode">Zip Code</label>
+					<input type="number" class="form-control" id="zipcode" [(ngModel)]="team.zipcode" name="zipcode">
+				</div>
+				<h3>User Info</h3>
+				<div class="form-group">
+					<label for="userName">User Name</label>
+					<input type="text" name="userName" class="form-control" id="userName" [(ngModel)]="team.userName">
+				</div>
+				<div class="form-group">
+					<label for="email">User Email</label>
+					<input type="email" name="email" class="form-control" id="email" [(ngModel)]="team.userEmail">
+				</div>
+				<div class="form-group">
+					<label for="password">User Password</label>
+					<input type="password" name="password" class="form-control" id="password" [(ngModel)]="team.userPassword">
+				</div>
+				<div class="form-group">
+					<label for="repassword">Repeat Password</label>
+					<input type="password" name="repassword" class="form-control" id="repassword">
+				</div>
+				<div class="form-group">
+					<label for="sport">Choose an sport</label>
+					<ng-select2 (valueChanged)="sportSelection($event)" [placeholder]="'Please select a sport'" [data]="sports" id="sport"></ng-select2>
+				</div>
+				<button type="submit" class="btn btn-success">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
