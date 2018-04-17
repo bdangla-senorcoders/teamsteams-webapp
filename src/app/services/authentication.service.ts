@@ -15,7 +15,6 @@ export class AuthenticationService {
 	    return this.http.post(API_ENDPOINT, body, httpOptions);
 	}
 	isLogged(){
-		console.log(JSON.parse(this.cookieService.get('sessionToken')))
 		return this.cookieService.check('sessionToken');
 	}
 	logOut(){

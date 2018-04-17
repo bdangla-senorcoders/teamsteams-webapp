@@ -30,10 +30,10 @@
 				    <div *ngIf="addPlayer.get('lastname').hasError('required') && addPlayer.get('lastname').touched" class="alert alert-danger">Last Name is required</div>
 				</div>
 				<div class="form-group">
-					<label for="birthdate">BirthDate</label>
-				    <input type="date" class="form-control" id="birthdate" placeholder="BirthDate" formControlName="birthdate">
-				     <small id="birthdate" class="form-text text-muted">Example 01/01/2000.</small>
-				     <div *ngIf="addPlayer.get('birthdate').hasError('required') && addPlayer.get('birthdate').touched" class="alert alert-danger">BirtDate is required</div>
+					<label for="birthDay">BirthDate</label>
+				    <input type="date" class="form-control" id="birthDay" placeholder="birthDay" formControlName="birthDay">
+				     <small id="birthDay" class="form-text text-muted">Example 01/01/2000.</small>
+				     <div *ngIf="addPlayer.get('birthDay').hasError('required') && addPlayer.get('birthDay').touched" class="alert alert-danger">birthDay is required</div>
 				</div>
 				<div class="form-group">
 				    <label for="email">Email address</label>
@@ -60,10 +60,6 @@
 						</div>				    	
 				    </div>
 			  	</div>
-			  	<!-- <div class="form-group">
-					<label for="birthday">BirthDay</label>
-				    <input type="text" class="form-control" id="birthday" placeholder="BirthDay" formControlName="birthday">
-				</div> -->
 				<div class="form-group">
 				    <label for="gender">Gender</label>
 				    <select class="form-control" id="gender" formControlName="gender">
@@ -78,18 +74,52 @@
 				    <div *ngIf="addPlayer.get('yerseyNumber').hasError('required') && addPlayer.get('yerseyNumber').touched" class="alert alert-danger">Yersey Number is required</div>
 				</div>
 				<div class="form-group">
-					<label for="position">Position</label>
-				    <input type="text" class="form-control" id="position" placeholder="Position" formControlName="position">
-				    <div *ngIf="addPlayer.get('position').hasError('required') && addPlayer.get('position').touched" class="alert alert-danger">Position is required</div>
+					<label for="positions">Positions</label>
+				    <input type="text" class="form-control" id="positions" placeholder="Positions" formControlName="positions">
+				    <div *ngIf="addPlayer.get('positions').hasError('required') && addPlayer.get('positions').touched" class="alert alert-danger">Positions is required</div>
 				</div>
 				<div class="form-group">
-			    	<label for="contacts">Contacts</label>
-			    	<textarea class="form-control" id="contacts" rows="3" formControlName="contacts"></textarea>
+					<label for="contacts" style="width: 100%">Contacts <small (click)="addMore()" style="float: right; cursor: pointer;">Add More <i class="fa fa-plus"></i></small></label>
+					<div class="row">
+						<div class="col-6">
+							<select class="form-control">
+								<option value="email">Email</option>
+								<option value="phone">Phone</option>
+							</select>
+						</div>
+						<div class="col-6">
+							<input type="text" placeholder="value" class="form-control">
+						</div>
+					</div>
+			    	<!-- <textarea class="form-control" id="contacts" rows="3" formControlName="contacts"></textarea>
 			    	<small id="contacts" class="form-text text-muted">One contact per line.</small>
-			    	<div *ngIf="addPlayer.get('birthdate').hasError('contacts') && addPlayer.get('contacts').touched" class="alert alert-danger">Contacts is required</div>
+			    	<div *ngIf="addPlayer.get('contacts').hasError('contacts') && addPlayer.get('contacts').touched" class="alert alert-danger">Contacts is required</div> -->
 			  	</div>
 			  	<div class="form-group">
-		      		<input type="submit" value="Create" [disabled]="addPlayer.invalid">
+				    <label for="nonPlayer">nonPlayer</label>
+				    <select class="form-control" id="nonPlayer" formControlName="nonPlayer">
+				     	<option value="true">True</option>
+				      <option value="false">False</option>
+				    </select>
+				    <div *ngIf="addPlayer.get('gender').hasError('required') && addPlayer.get('gender').touched" class="alert alert-danger">Gender is required</div>
+				</div>
+				<div class="form-group">
+				    <label for="managerAccess">managerAccess</label>
+				    <select class="form-control" id="managerAccess" formControlName="managerAccess">
+				      <option value="true">True</option>
+				      <option value="false">False</option>
+				    </select>
+				    <div *ngIf="addPlayer.get('gender').hasError('required') && addPlayer.get('gender').touched" class="alert alert-danger">Gender is required</div>
+				</div>
+			  	<div class="form-group">
+				    <label for="teams">Teams</label>
+				    <select class="form-control" id="team" formControlName="team">
+				      <option *ngFor="let team of teams" value="{{team.id}}">{{team.name}}</option>
+				    </select>
+				    <div *ngIf="addPlayer.get('gender').hasError('required') && addPlayer.get('gender').touched" class="alert alert-danger">Gender is required</div>
+				</div>
+			  	<div class="form-group">
+		      		<input type="submit" value="Create" class="btn-red" [disabled]="addPlayer.invalid" [ngClass]="{'noActive':addPlayer.invalid}">
 		      	</div>
 		    </form>
 		</div>
