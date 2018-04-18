@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { HostListener, Inject } from "@angular/core";
 import {AuthenticationService} from './services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +12,7 @@ export class AppComponent {
   title = 'app';
   isCollapsed=true;
   isLogged;
-  constructor(private auth:AuthenticationService){
+  constructor(private auth:AuthenticationService,private toastr: ToastrService){
     this.isLoggedFunction();
   }
   @HostListener("window:scroll", [])
@@ -39,6 +40,10 @@ export class AppComponent {
   }
   public logOut(){
     this.auth.logOut();
-    this.isLogged=false
+    this.isLogged=false;
+    this.logOutSuccess()
+  }
+  logOutSuccess() {
+    this.toastr.success('Success', 'LogOut Correct',{positionClass:"toast-top-center"});
   }
 }

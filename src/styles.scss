@@ -81,6 +81,29 @@
 	    transform: translate(-50% );
 	}
 }
+.btn-red{
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid #f32160;
+    width: 100%;
+    color: $colorRed;
+    font-weight: bold;
+    height: 55px;
+    cursor: pointer;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+    &:hover{
+        background: $colorRed;
+        color:white;
+    }
+}
+.noActive{
+    background: rgba(82, 82, 82, 0.5) !important;
+    border: none !important;
+    color: white !important;
+    cursor: default !important;
+}
 footer{
     background: #f4f4f4;
     text-align: center;

@@ -19,11 +19,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 const appRoutes: Routes=[
   {path:'', component:HomepageComponent},
   {path:'home', component:HomepageComponent},
   {path:'add-player', component:AddPlayerComponent},
-  {path:'login', component:LoginComponent}
+  {path:'login', component:LoginComponent},
+  {path:'contact', component:ContactPageComponent}
 ]
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes: Routes=[
     UserRegisterComponent,
     HomepageComponent,
     AddPlayerComponent,
-    LoginComponent
+    LoginComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,
