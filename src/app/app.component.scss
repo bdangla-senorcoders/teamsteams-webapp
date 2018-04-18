@@ -1,3 +1,4 @@
+@import "../assets/_variables.scss";
 $navActiveLink:#000;
 $navLink:#fff;
 $greenColor:#afc625;
@@ -33,6 +34,11 @@ $greenColor:#afc625;
 		&:hover{
 			color: $greenColor !important;
 		}
+	}
+	.getApp{
+		background: $colorRed;
+		color:white !important;
+		border-radius: 4px;
 	}
 }
 
