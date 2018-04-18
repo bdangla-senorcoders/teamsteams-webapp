@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 const appRoutes: Routes=[
   {path:'', component:HomepageComponent},
+  {path:'home', component:HomepageComponent},
   {path:'add-player', component:AddPlayerComponent},
   {path:'login', component:LoginComponent}
 ]
