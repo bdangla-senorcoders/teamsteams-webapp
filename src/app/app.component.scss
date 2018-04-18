@@ -1,5 +1,5 @@
 @import "../assets/_variables.scss";
-$navActiveLink:#000;
+$navActiveLink:#afc625;
 $navLink:#fff;
 $greenColor:#afc625;
 .navbar{
@@ -55,5 +55,13 @@ $greenColor:#afc625;
 	}	
 	.navbar-brand{
 		margin-left: 15px;
+	}
+	.menu-scroll{
+		.nav-link{
+			color:white !important;
+		}
+		.getApp{
+			background: transparent;
+		}
 	}
 }

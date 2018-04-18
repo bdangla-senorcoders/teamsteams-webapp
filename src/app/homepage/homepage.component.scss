@@ -112,6 +112,68 @@ $darkColor:#545454;
 		}
 	}
 }
+.team-section{
+	.img-container{
+		margin-bottom: 40px;
+		text-align: center;
+	}
+	a{
+		position: relative;
+		display: inline-block;
+		overflow: hidden;
+		&:hover>.overlay{
+			opacity: .9;
+			-webkit-transition: opacity 0.4s ease-in-out 0s;
+		}
+		&:hover>.content{
+			top: 50% !important
+		}
+	}
+	img{
+		width: 100%;
+		border-radius: 50%;
+	}
+	.overlay{
+		position: absolute;
+	    top: 0;
+	    height: 100%;
+	    background: linear-gradient(135deg, #8ec64e 0%,#41aba0 100%);
+	    left: 0;
+	    width: 100%;
+	    z-index: 9;
+	    opacity: 0;
+	    border-radius: 50%;
+	    transition: opacity 0.4s ease-in-out 0s;
+	    -webkit-transition: opacity 0.4s ease-in-out 0s;
+	}
+	.content{
+		width: 80%;
+		position: absolute;
+    	top: -150px;
+	    left: 50%;
+	    transform: translate(-50%,-50%);
+	    z-index: 10;
+	    transition: all 0.4s ease-in-out 0s;
+	    -moz-transition: all 0.4s ease-in-out 0s;
+	    -webkit-transition: all 0.4s ease-in-out 0s;
+	    .name{
+	    	font-weight: bold;
+		    color: white;
+		    margin-bottom: 5px;
+		    text-transform: uppercase;
+	    }
+	    .position{
+	    	color: white;
+		    font-size: 1rem;
+		    text-transform: uppercase;
+		    font-weight: lighter;
+	    }
+	    .description{
+	    	color: white;
+    		font-size: 12px
+	    }
+	}
+}
 @media(max-width: 768px){
 	.banner-container{
 		text-align: center;
