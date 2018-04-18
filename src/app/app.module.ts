@@ -16,6 +16,7 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 
+import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -35,7 +36,7 @@ const appRoutes: Routes=[
     HomepageComponent,
     AddPlayerComponent,
     LoginComponent,
-    ContactPageComponent
+    ContactPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,10 @@ const appRoutes: Routes=[
     NgbModule.forRoot(),
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCOeXnyQinWcJhCb5T26OmV7rmhLXktpe4'
+    }),
   ],
   providers: [TeamService,AuthenticationService,CookieService],
   bootstrap: [AppComponent]

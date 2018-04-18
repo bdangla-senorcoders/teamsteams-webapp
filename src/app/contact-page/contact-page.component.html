@@ -3,7 +3,11 @@
 		<h1>Contact</h1>
 	</div>
 </div>
-<div class="container section">
+<div class="contact-bg">
+	<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" class="map">
+	  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+	</agm-map>
+	<div class="container section">
 	<div class="row">
 		<div class="col-lg-12 heading">
 			<h3 class="title-section">
@@ -57,5 +61,6 @@
 			  	<button class="btn-red" [ngClass]="{'noActive':contact.invalid}" [disabled]="contact.invalid">Send</button>
 			</form>
 		</div>
+	</div>
 	</div>
 </div>
