@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "/assets/_variables.scss";
+@import "/assets/_variables.scss"; 
 .select2-container{width: 100% !important};
 /*-----------------------similar styles for pages ------------------*/
 .page-header{
@@ -79,5 +79,72 @@
 	    left: 50%;
 	    bottom: 0;
 	    transform: translate(-50% );
+	}
+}
+footer{
+    background: #f4f4f4;
+    text-align: center;
+    .pre-footer{
+    	padding: 20px 0;
+	    .follow{
+	    	color:$colorGray;
+	    	font-size: 18px;
+	    }
+		a{
+			width: 196px;
+		    height: 61px;
+		    border: 2px solid #000;
+		    display: inline-block;
+		    overflow: hidden;
+		    position: relative;
+		    border-radius: 6px;
+		}
+		.logo{
+			display: block;
+		    width: 100%;
+		    max-width: 100px;
+		    margin: 0 auto 20px;
+		}
+		.social-link {
+			list-style:none;
+			li{
+				display: inline-block;
+			}
+			a{
+				width: 50px;
+			    height: 50px;
+			    border-radius: 50%;
+			    padding-top: 3px;
+			    background: #a09f9e;
+			    color: white;
+			    font-size: 30px;
+			    margin-right: 10px;
+			    border: 0;
+			    &:hover{
+			    	background: $colorRed;
+			    }
+			}
+		}
+	}
+	.sub-footer{
+		background: #e6e6e6;
+    	padding: 20px 0;
+    	color:#666
+	}
+}
+.btn-ios{
+	background: url(./assets/download-as-d.png) -5px -5px no-repeat;
+	margin-right: 10px
+}
+.btn-android{
+	background: url(./assets/download-gp-d.png) -5px -5px no-repeat;
+	margin-left: 10px
+}
+@media(max-width: 998px){
+	.banner-container{
+		padding-bottom: 0;
+	}
+	.btn-ios, .btn-android{
+		margin:0 !important
 	}
 }

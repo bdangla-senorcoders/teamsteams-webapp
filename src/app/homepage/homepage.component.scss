@@ -1,6 +1,6 @@
 $lightColor:white;
 $greenColor:#afc625;
-$paddingSection:100px 0 0;
+$paddingSection:100px 0 20px;
 $pColor:#7e7e7e;
 $greenGradient:linear-gradient(135deg,  #8ec64e 0%,#41aba0 100%);
 $darkColor:#545454;
@@ -39,14 +39,6 @@ $darkColor:#545454;
 	    overflow: hidden;
 	    position: relative;
 	    border-radius: 6px;
-	}
-	.btn-ios{
-		background: url(../../assets/download-as-d.png) -5px -5px no-repeat;
-		margin-right: 10px
-	}
-	.btn-android{
-		background: url(../../assets/download-gp-d.png) -5px -5px no-repeat;
-		margin-left: 10px
 	}
 }
 
@@ -118,14 +110,6 @@ $darkColor:#545454;
 			max-width: 270px;
    			 margin: 0 auto;
 		}
-	}
-}
-@media(max-width: 998px){
-	.banner-container{
-		padding-bottom: 0;
-	}
-	.btn-ios, .btn-android{
-		margin:0 !important
 	}
 }
 @media(max-width: 768px){
