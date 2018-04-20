@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TeamService} from '../services/team.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-player',
   templateUrl: './add-player.component.html',
@@ -11,7 +12,7 @@ export class AddPlayerComponent implements OnInit {
   teams:any;
   htmlContent:string;
   @ViewChild('contacts') contacts:ElementRef;
-  constructor(private fb: FormBuilder,private teamservice: TeamService) {
+  constructor(private fb: FormBuilder,private teamservice: TeamService,private toastr: ToastrService) {
   }
   createPlayer(){
     let user={
@@ -37,14 +38,17 @@ export class AddPlayerComponent implements OnInit {
         }
         this.teamservice.createPlayer(player).subscribe(
           data=>{
-            console.log(data);
+            this.showSuccess();
+            this.addPlayer.reset();
           },
           error=>{
+            this.showError(error)
             console.log(error)
           }
         )
       },
       error=>{
+        this.showError(error)
         console.log(error)
       }
     )
@@ -79,6 +83,12 @@ export class AddPlayerComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+  showError(e) {
+    this.toastr.error('Error', e,{positionClass:"toast-top-center"});
+  }
+  showSuccess() {
+    this.toastr.success('Well Done', 'Your player was added Successfully',{positionClass:"toast-top-center"});
   }
   addMoreContact(){
     // let i=window.document.getElementsByClassName('contacts-container').length;

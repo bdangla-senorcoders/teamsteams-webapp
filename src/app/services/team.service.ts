@@ -26,8 +26,6 @@ export class TeamService {
   }
   createUser(user){
     let body = JSON.stringify(user);
-    console.log(body)
-    //return body
     return this.http.post(`${API_ENDPOINT}user/player/`,body, this.httpOptions )
   }
   createPlayer(player){
