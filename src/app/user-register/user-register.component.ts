@@ -39,29 +39,29 @@ export class UserRegisterComponent implements OnInit {
 			()=>console.log('ok')
 		)
 	}
-	searchTeam(){
-		this.teamService.searchTeam(this.search).subscribe(
-			data=>{this.teamList=data},
-			err=>console.error(err),
-			()=>{
-					console.log('search ok');
-					this.showSearchResult=true;
-				}
-		)
-	}
-	createTeam(){
-		this.teamService.createTeam(this.team).subscribe(
-			data=>{
-				this.getTeams();
-				return true;
-			},
-			error=>{
-				console.error("error saving food!");
-				return Observable.throw(error);
+	// searchTeam(){
+	// 	this.teamService.searchTeam(this.search).subscribe(
+	// 		data=>{this.teamList=data},
+	// 		err=>console.error(err),
+	// 		()=>{
+	// 				console.log('search ok');
+	// 				this.showSearchResult=true;
+	// 			}
+	// 	)
+	// }
+	// createTeam(){
+	// 	this.teamService.createTeam(this.team).subscribe(
+	// 		data=>{
+	// 			this.getTeams();
+	// 			return true;
+	// 		},
+	// 		error=>{
+	// 			console.error("error saving food!");
+	// 			return Observable.throw(error);
 				
-			}
-		);
-	}
+	// 		}
+	// 	);
+	// }
   ngOnInit() {
   	this.getTeams();
   	this.sports=[

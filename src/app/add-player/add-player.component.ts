@@ -1,35 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TeamService} from '../services/team.service';
 @Component({
   selector: 'app-add-player',
   templateUrl: './add-player.component.html',
-  styleUrls: ['./add-player.component.scss']
+  styleUrls: ['./add-player.component.scss'],
 })
 export class AddPlayerComponent implements OnInit {
 	addPlayer:FormGroup;
   teams:any;
+  htmlContent:string;
+  @ViewChild('contacts') contacts:ElementRef;
   constructor(private fb: FormBuilder,private teamservice: TeamService) {
   }
   createPlayer(){
-    let player={
-      'team':this.addPlayer.get('team').value,
-      'birthDay':this.addPlayer.get('birthDay').value,
-      'yerseyNumber':this.addPlayer.get('yerseyNumber').value,
-      'gender':this.addPlayer.get('gender').value,
-      'nonPlayer':this.addPlayer.get('nonPlayer').value,
-      'managerAccess':this.addPlayer.get('managerAccess').value,
-      'positions':this.addPlayer.get('positions').value
-    }
     let user={
       "username":this.addPlayer.get('username').value, 
       "firstName":this.addPlayer.get('firstname').value, 
       "lastName":this.addPlayer.get('lastname').value, 
       "password":this.addPlayer.get('password').value,
-      "email":this.addPlayer.get('email').value
+      "email":this.addPlayer.get('email').value,
+      "contacts":[this.addPlayer.get('contacts_val').value]
     }
-  	console.log(player)
-    console.log(user)
+   
+    // let player={
+    //       'team':this.addPlayer.get('team').value,
+    //       'birthDay':this.addPlayer.get('birthDay').value,
+    //       'yerseyNumber':this.addPlayer.get('yerseyNumber').value,
+    //       'gender':this.addPlayer.get('gender').value,
+    //       'nonPlayer':this.addPlayer.get('nonPlayer').value,
+    //       'managerAccess':this.addPlayer.get('managerAccess').value,
+    //       'positions':[this.addPlayer.get('positions').value],
+    //     }
+    this.teamservice.createUser(user).subscribe(
+      data=>{
+        let id=data['id'];
+      //   let player={
+      //     'user':id,
+      //     'team':this.addPlayer.get('team').value,
+      //     'birthDay':this.addPlayer.get('birthDay').value,
+      //     'yerseyNumber':this.addPlayer.get('yerseyNumber').value,
+      //     'gender':this.addPlayer.get('gender').value,
+      //     'nonPlayer':this.addPlayer.get('nonPlayer').value,
+      //     'managerAccess':this.addPlayer.get('managerAccess').value,
+      //     'positions':[this.addPlayer.get('positions').value]
+      //   }
+      //   this.teamservice.createPlayer(player).subscribe(
+      //     data=>{
+      //       console.log(data);
+      //     },
+      //     error=>{
+      //       console.log(error)
+      //     }
+      //   )
+      // },
+      error=>{
+        console.log(error)
+      }
+    )
 
   }
   ngOnInit() {
@@ -43,10 +71,11 @@ export class AddPlayerComponent implements OnInit {
   		gender:['', Validators.required],
   		positions:['', Validators.required],
   		yerseyNumber:['', Validators.required],
-  		contacts:['', Validators.required],
       nonPlayer:['', Validators.required],
       managerAccess:['', Validators.required],
       team:['', Validators.required],
+      contacts_type:['', Validators.required],
+      contacts_val:['', Validators.required],
   	});
     this.getTeams()
   }
@@ -60,5 +89,10 @@ export class AddPlayerComponent implements OnInit {
       }
     )
   }
-
+  addMoreContact(){
+    // let i=window.document.getElementsByClassName('contacts-container').length;
+    // console.log(i);
+    //this.contacts.nativeElement.insertAdjacentHTML('beforeend', `<div class="row contacts-container" style="margin-top:20px"><div class="col-6"><select class="form-control" formControlName="contacts_type"><option value="email">Email</option><option value="phone">Phone</option></select></div><div class="col-6"><input type="text" placeholder="value" class="form-control" formControlName="contacts_val"></div></div>`);
+    //this.contacts.nativeElement.innerHTML = `<select class="form-control"><option value="email">Email</option><option value="phone">Phone</option></select><input type="text" placeholder="value" class="form-control">`
+  }
 }

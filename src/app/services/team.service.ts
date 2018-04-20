@@ -24,6 +24,17 @@ export class TeamService {
   getTeams(){
      return this.http.get(`${API_ENDPOINT}teams/`,this.httpOptions)
   }
+  createUser(user){
+    let body = JSON.stringify(user);
+    console.log(body)
+    //return body
+    return this.http.post(`${API_ENDPOINT}user/player/`,body, this.httpOptions )
+  }
+  createPlayer(player){
+    let body = JSON.stringify(player);
+    //return body
+    return this.http.post(`${API_ENDPOINT}players/`,body, this.httpOptions )
+  }
  //  searchTeam(teamName){
 	// return this.http.get(`${API_ENDPOINT}?name=%${teamName}%`);
  //  }

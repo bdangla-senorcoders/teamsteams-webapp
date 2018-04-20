@@ -63,8 +63,8 @@
 				<div class="form-group">
 				    <label for="gender">Gender</label>
 				    <select class="form-control" id="gender" formControlName="gender">
-				      <option>M</option>
-				      <option>F</option>
+				      <option value="male">Male</option>
+				      <option value="female">Female</option>
 				    </select>
 				    <div *ngIf="addPlayer.get('gender').hasError('required') && addPlayer.get('gender').touched" class="alert alert-danger">Gender is required</div>
 				</div>
@@ -75,22 +75,24 @@
 				</div>
 				<div class="form-group">
 					<label for="positions">Positions</label>
-				    <input type="text" class="form-control" id="positions" placeholder="Positions" formControlName="positions">
+				    <textarea type="text" class="form-control" id="positions" placeholder="Positions" formControlName="positions"></textarea>
+				    <small class="form-text text-muted">One position per line</small>
 				    <div *ngIf="addPlayer.get('positions').hasError('required') && addPlayer.get('positions').touched" class="alert alert-danger">Positions is required</div>
 				</div>
 				<div class="form-group">
-					<label for="contacts" style="width: 100%">Contacts <small (click)="addMore()" style="float: right; cursor: pointer;">Add More <i class="fa fa-plus"></i></small></label>
-					<div class="row">
-						<div class="col-6">
-							<select class="form-control">
-								<option value="email">Email</option>
-								<option value="phone">Phone</option>
-							</select>
+					<label for="contacts" style="width: 100%">Contacts <!-- <small (click)="addMoreContact()" style="float: right; cursor: pointer;">Add More <i class="fa fa-plus"></i></small> --></label>
+						<div class="row contacts-container">
+							<div class="col-6">
+								<select class="form-control" formControlName="contacts_type">
+									<option value="email">Email</option>
+									<option value="phone">Phone</option>
+								</select>
+							</div>
+							<div class="col-6">
+								<input type="text" placeholder="value" class="form-control" formControlName="contacts_val">
+							</div>
 						</div>
-						<div class="col-6">
-							<input type="text" placeholder="value" class="form-control">
-						</div>
-					</div>
+						<div #contacts></div>
 			    	<!-- <textarea class="form-control" id="contacts" rows="3" formControlName="contacts"></textarea>
 			    	<small id="contacts" class="form-text text-muted">One contact per line.</small>
 			    	<div *ngIf="addPlayer.get('contacts').hasError('contacts') && addPlayer.get('contacts').touched" class="alert alert-danger">Contacts is required</div> -->
