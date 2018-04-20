@@ -20,40 +20,30 @@ export class AddPlayerComponent implements OnInit {
       "lastName":this.addPlayer.get('lastname').value, 
       "password":this.addPlayer.get('password').value,
       "email":this.addPlayer.get('email').value,
-      "contacts":[this.addPlayer.get('contacts_val').value]
+      "contacts":[{'name':this.addPlayer.get('contacts_name').value, 'info':this.addPlayer.get('contacts_val').value, 'type':this.addPlayer.get('contacts_type').value}]
     }
-   
-    // let player={
-    //       'team':this.addPlayer.get('team').value,
-    //       'birthDay':this.addPlayer.get('birthDay').value,
-    //       'yerseyNumber':this.addPlayer.get('yerseyNumber').value,
-    //       'gender':this.addPlayer.get('gender').value,
-    //       'nonPlayer':this.addPlayer.get('nonPlayer').value,
-    //       'managerAccess':this.addPlayer.get('managerAccess').value,
-    //       'positions':[this.addPlayer.get('positions').value],
-    //     }
     this.teamservice.createUser(user).subscribe(
       data=>{
         let id=data['id'];
-      //   let player={
-      //     'user':id,
-      //     'team':this.addPlayer.get('team').value,
-      //     'birthDay':this.addPlayer.get('birthDay').value,
-      //     'yerseyNumber':this.addPlayer.get('yerseyNumber').value,
-      //     'gender':this.addPlayer.get('gender').value,
-      //     'nonPlayer':this.addPlayer.get('nonPlayer').value,
-      //     'managerAccess':this.addPlayer.get('managerAccess').value,
-      //     'positions':[this.addPlayer.get('positions').value]
-      //   }
-      //   this.teamservice.createPlayer(player).subscribe(
-      //     data=>{
-      //       console.log(data);
-      //     },
-      //     error=>{
-      //       console.log(error)
-      //     }
-      //   )
-      // },
+        let player={
+          'user':id,
+          'team':this.addPlayer.get('team').value,
+          'birthDay':this.addPlayer.get('birthDay').value,
+          'yerseyNumber':this.addPlayer.get('yerseyNumber').value,
+          'gender':this.addPlayer.get('gender').value,
+          'nonPlayer':this.addPlayer.get('nonPlayer').value,
+          'managerAccess':this.addPlayer.get('managerAccess').value,
+          'positions':[this.addPlayer.get('positions').value]
+        }
+        this.teamservice.createPlayer(player).subscribe(
+          data=>{
+            console.log(data);
+          },
+          error=>{
+            console.log(error)
+          }
+        )
+      },
       error=>{
         console.log(error)
       }
@@ -76,6 +66,7 @@ export class AddPlayerComponent implements OnInit {
       team:['', Validators.required],
       contacts_type:['', Validators.required],
       contacts_val:['', Validators.required],
+      contacts_name:['', Validators.required],
   	});
     this.getTeams()
   }

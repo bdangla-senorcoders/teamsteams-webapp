@@ -82,13 +82,16 @@
 				<div class="form-group">
 					<label for="contacts" style="width: 100%">Contacts <!-- <small (click)="addMoreContact()" style="float: right; cursor: pointer;">Add More <i class="fa fa-plus"></i></small> --></label>
 						<div class="row contacts-container">
-							<div class="col-6">
+							<div class="col-4">
 								<select class="form-control" formControlName="contacts_type">
 									<option value="email">Email</option>
-									<option value="phone">Phone</option>
+									<option value="telephone">Phone</option>
 								</select>
 							</div>
-							<div class="col-6">
+							<div class="col-4">
+								<input type="text" placeholder="Contact Name" class="form-control" formControlName="contacts_name">
+							</div>
+							<div class="col-4">
 								<input type="text" placeholder="value" class="form-control" formControlName="contacts_val">
 							</div>
 						</div>
