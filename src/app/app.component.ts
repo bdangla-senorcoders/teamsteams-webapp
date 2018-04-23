@@ -12,8 +12,10 @@ export class AppComponent {
   title = 'app';
   isCollapsed=true;
   isLogged;
+  role:string;
   constructor(private auth:AuthenticationService,private toastr: ToastrService){
     this.isLoggedFunction();
+    this.getRolePlayer()
   }
   @HostListener("window:scroll", [])
   onWindowScroll() {
@@ -42,6 +44,10 @@ export class AppComponent {
     this.auth.logOut();
     this.isLogged=false;
     this.logOutSuccess()
+  }
+  getRolePlayer(){
+   let data=this.auth.userLogged();
+   this.role=data.role.name;
   }
   logOutSuccess() {
     this.toastr.success('Success', 'LogOut Correct',{positionClass:"toast-top-center"});

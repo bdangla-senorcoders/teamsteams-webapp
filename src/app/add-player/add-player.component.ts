@@ -11,6 +11,7 @@ export class AddPlayerComponent implements OnInit {
 	addPlayer:FormGroup;
   teams:any;
   htmlContent:string;
+  private base64image:String="";
   @ViewChild('contacts') contacts:ElementRef;
   constructor(private fb: FormBuilder,private teamservice: TeamService,private toastr: ToastrService) {
   }
@@ -38,7 +39,15 @@ export class AddPlayerComponent implements OnInit {
         }
         this.teamservice.createPlayer(player).subscribe(
           data=>{
-            this.showSuccess();
+            let image={'id':id,'image':this.base64image}
+            this.teamservice.uploadImage(image).subscribe(
+              data=>{
+                this.showSuccess();
+              },
+              error=>{
+                this.showError(error)
+              }
+            )
             this.addPlayer.reset();
           },
           error=>{
@@ -96,4 +105,30 @@ export class AddPlayerComponent implements OnInit {
     //this.contacts.nativeElement.insertAdjacentHTML('beforeend', `<div class="row contacts-container" style="margin-top:20px"><div class="col-6"><select class="form-control" formControlName="contacts_type"><option value="email">Email</option><option value="phone">Phone</option></select></div><div class="col-6"><input type="text" placeholder="value" class="form-control" formControlName="contacts_val"></div></div>`);
     //this.contacts.nativeElement.innerHTML = `<select class="form-control"><option value="email">Email</option><option value="phone">Phone</option></select><input type="text" placeholder="value" class="form-control">`
   }
+  uploadImage(event:FileList) {
+  let preview = document.querySelector('img');
+  let file    = event.item(0);
+  //to convert base64
+  let reader  = new FileReader();
+  //to show image
+  let reader2  = new FileReader();
+  // Client-side validation example
+  if (file.type.split('/')[0] !=='image') {
+    this.showError('unsupported file type ');
+    return;
+  }
+  reader2.onloadend = function () {
+    preview.src = reader2.result;
+  }
+  if (file) {
+    reader.onload =this._handleReaderLoaded.bind(this);
+    reader.readAsBinaryString(file);
+    reader2.readAsDataURL(file);
+  }
+  
+}
+_handleReaderLoaded(readerEvt) {
+  let binaryString = readerEvt.target.result;
+  this.base64image=btoa(binaryString);
+}
 }

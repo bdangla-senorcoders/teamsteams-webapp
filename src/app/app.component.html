@@ -9,20 +9,20 @@
           <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link getApp" href="#">Get App</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/contact">Contact</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="role=='Manager'">
           <a class="nav-link" routerLink="/add-player">Add Player</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link getApp" href="#">Get App</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="isLogged else login">
           <a class="nav-link" (click)="logOut()">LogOut <i class="fa fa-sign-out"></i></a>
         </li>
         <ng-template #login>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/login">Login <i class="fa fa-sign-in"></i></a>
+            <a class="nav-link" routerLink="/login"> Register/Login <i class="fa fa-sign-in"></i></a>
           </li>
         </ng-template>
 <!--         <li class="nav-item dropdown" ngbDropdown>
@@ -61,7 +61,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          © 2018 SupperClub App, LLC. All rights reserved.
+          © 2018 SenorCoders, LLC. All rights reserved.
         </div>
       </div>
     </div>

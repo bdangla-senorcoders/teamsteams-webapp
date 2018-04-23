@@ -33,6 +33,10 @@ export class TeamService {
     //return body
     return this.http.post(`${API_ENDPOINT}players/`,body, this.httpOptions )
   }
+  uploadImage(image){
+    let body = JSON.stringify(image);
+    return this.http.post(`${API_ENDPOINT}images/users`,body, this.httpOptions )
+  }
  //  searchTeam(teamName){
 	// return this.http.get(`${API_ENDPOINT}?name=%${teamName}%`);
  //  }
