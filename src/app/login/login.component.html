@@ -9,11 +9,14 @@
 		 	<form [formGroup]="loginForm" (ngSubmit)="login()">
 			<div class="form-group">
 				<h3>Enter you Credential</h3>
-				    <label for="username">UserName</label>
-				    <input type="text" class="form-control" id="username" placeholder="UserName" formControlName="username" [ngClass]="{'is-invalid':loginForm.get('username').invalid && loginForm.get('username').touched}">
-				     <div class="invalid-feedback" *ngIf="loginForm.get('username').hasError('required')">
-			          Username Required.
+				    <label for="email">UserName</label>
+				    <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email" [ngClass]="{'is-invalid':loginForm.get('email').invalid && loginForm.get('email').touched}">
+				     <div class="invalid-feedback" *ngIf="loginForm.get('email').hasError('required')">
+			          Email Required.
 			        </div>
+			        <div class="invalid-feedback" *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+							Invalid Email
+					</div>	
 				</div>
 				<div class="form-group">
 				    <label for="password">Password</label>
