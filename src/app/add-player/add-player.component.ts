@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TeamService} from '../services/team.service';
 import { ToastrService } from 'ngx-toastr';
+import {AuthenticationService} from '../services/authentication.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-player',
   templateUrl: './add-player.component.html',
@@ -13,7 +15,7 @@ export class AddPlayerComponent implements OnInit {
   htmlContent:string;
   private base64image:String="";
   @ViewChild('contacts') contacts:ElementRef;
-  constructor(private fb: FormBuilder,private teamservice: TeamService,private toastr: ToastrService) {
+  constructor(private fb: FormBuilder,private teamservice: TeamService,private toastr: ToastrService, private auth:AuthenticationService, private router:Router) {
   }
   createPlayer(){
     let user={
@@ -81,7 +83,10 @@ export class AddPlayerComponent implements OnInit {
       contacts_val:['', Validators.required],
       contacts_name:['', Validators.required],
   	});
-    this.getTeams()
+    this.getTeams();
+    if(!this.auth.isLogged()){
+      this.router.navigate(["/"])
+    }
   }
   getTeams(){
     this.teamservice.getTeams().subscribe(

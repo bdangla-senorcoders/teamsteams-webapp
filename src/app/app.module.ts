@@ -21,12 +21,13 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import {MyGuardService} from './services/my-guard.service';
 const appRoutes: Routes=[
-  {path:'', component:HomepageComponent},
   {path:'home', component:HomepageComponent},
-  {path:'add-player', component:AddPlayerComponent},
+  {path:'add-player', component:AddPlayerComponent, canActivate:[MyGuardService]},
   {path:'login', component:LoginComponent},
-  {path:'contact', component:ContactPageComponent}
+  {path:'contact', component:ContactPageComponent},
+  {path:'', redirectTo:'home',pathMatch: 'full'},
 ]
 
 @NgModule({
@@ -53,7 +54,7 @@ const appRoutes: Routes=[
       apiKey: 'AIzaSyCOeXnyQinWcJhCb5T26OmV7rmhLXktpe4'
     }),
   ],
-  providers: [TeamService,AuthenticationService,CookieService],
+  providers: [MyGuardService,TeamService,AuthenticationService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
