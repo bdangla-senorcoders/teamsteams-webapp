@@ -14,10 +14,11 @@ export class AppComponent {
   isCollapsed=true;
   isLogged;
   isManager:boolean=false;
+  perfilImage:string;
   constructor(private auth:AuthenticationService,private toastr: ToastrService, private router:Router){
     this.isLoggedFunction();
     if (this.isLogged) {
-      this.getRolePlayer()
+      this.getUserInfo()
     }
   }
   @HostListener("window:scroll", [])
@@ -51,16 +52,18 @@ export class AppComponent {
     if(!this.auth.isLogged()){
       this.router.navigate(["/"])
     }
+    this.perfilImage="";
   }
-  getRolePlayer(){
+  getUserInfo(){
    let data=this.auth.userLogged();
-   console.log(data.role.name)
+   let ramdon = new Date().getTime();
    if (data.role.name=="Manager") {
     this.isManager=true
    }
    else{
      this.isManager=false
    }
+   this.perfilImage=`http://138.68.19.227:8187/images/${ramdon}/users&thumbnail/${data.id}`
   }
   logOutSuccess() {
     this.toastr.success('Success', 'LogOut Correct',{positionClass:"toast-top-center"});

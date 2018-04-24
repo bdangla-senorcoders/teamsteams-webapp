@@ -41,7 +41,16 @@ $greenColor:#afc625;
 		border-radius: 4px;
 	}
 }
-
+.perfil-content{
+	position: fixed;
+    bottom: 10px;
+    right: 10px;
+	img{
+		border-radius: 50%;
+	    width: 70px;
+	    box-shadow: 1px 1px 16px 0px;
+	}
+}
 @media(max-width: 768px){
 	.navbar{
 		padding-left:0;

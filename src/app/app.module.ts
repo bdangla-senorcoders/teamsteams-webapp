@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import {MyGuardService} from './services/my-guard.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 const appRoutes: Routes=[
   {path:'home', component:HomepageComponent},
   {path:'add-player', component:AddPlayerComponent, canActivate:[MyGuardService]},
@@ -38,6 +39,7 @@ const appRoutes: Routes=[
     AddPlayerComponent,
     LoginComponent,
     ContactPageComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
