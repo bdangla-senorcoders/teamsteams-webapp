@@ -32,3 +32,23 @@ form{
 	    padding: 5px 10px;
 	}
 }
+.user-img{
+	background: url(../../assets/avatar.png);
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	img{
+		width: 100%;
+   		height: auto;
+	}
+	input[type="file"]{
+		background: transparent !important;
+		border: 0 !important
+	}
+	.form-group{
+		margin-bottom: 0
+	}
+	.btn-red{
+		text-align: center;
+	}
+}

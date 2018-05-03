@@ -49,6 +49,11 @@ $greenColor:#afc625;
 		border-radius: 50%;
 	    width: 70px;
 	    box-shadow: 1px 1px 16px 0px;
+	    display: block;
+	    background: url(../assets/avatar.png);
+	    height: 70px;
+	    background-size: cover;
+	    background-position: center;
 	}
 }
 @media(max-width: 768px){

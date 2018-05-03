@@ -14,6 +14,7 @@ export class AddPlayerComponent implements OnInit {
   teams:any;
   htmlContent:string;
   private base64image:String="";
+  preview:string;
   @ViewChild('contacts') contacts:ElementRef;
   constructor(private fb: FormBuilder,private teamservice: TeamService,private toastr: ToastrService, private auth:AuthenticationService, private router:Router) {
   }

@@ -83,7 +83,7 @@
 }
 .btn-red{
     text-transform: uppercase;
-    background: transparent;
+    background: transparent !important;
     border: 1px solid #f32160;
     width: 100%;
     color: $colorRed;
@@ -94,7 +94,7 @@
     margin: 0 auto;
     display: block;
     &:hover{
-        background: $colorRed;
+        background: $colorRed !important;
         color:white;
     }
 }
