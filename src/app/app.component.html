@@ -36,7 +36,7 @@
       </ul>
     </div>
   </nav>
-  <div class="perfil-content">
+  <div class="perfil-content" *ngIf="isLogged">
     <a routerLink="/perfil"><img src="{{perfilImage}}" alt=""></a>
   </div>
 <router-outlet></router-outlet>

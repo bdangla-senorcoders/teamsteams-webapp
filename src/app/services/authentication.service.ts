@@ -29,4 +29,22 @@ export class AuthenticationService {
 			return false;
 		}
 	}
+	changePassword(data){
+		let body = JSON.stringify(data);
+	    return this.http.post('http://138.68.19.227:8187/password/change', body, httpOptions);
+	}
+	updateCookie(old, newinfo){
+		let data={
+			"role":old.role,
+			"username":newinfo.username,
+			"firstName": newinfo.firstName,
+    		"lastName": newinfo.lastName,
+    		"email": newinfo.email,
+    		"id": old.id,
+    		"token": old.token
+    	}
+		let dataString=JSON.stringify(data);
+		this.cookieService.delete('sessionToken');
+		this.cookieService.set( 'sessionToken', dataString );
+	}
 }

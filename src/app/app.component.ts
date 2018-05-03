@@ -68,4 +68,7 @@ export class AppComponent {
   logOutSuccess() {
     this.toastr.success('Success', 'LogOut Correct',{positionClass:"toast-top-center"});
   }
+  ngOnInit(){
+    let currentUrl = this.router.url;
+  }
 }

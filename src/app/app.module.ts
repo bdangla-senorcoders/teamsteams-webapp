@@ -28,6 +28,7 @@ const appRoutes: Routes=[
   {path:'add-player', component:AddPlayerComponent, canActivate:[MyGuardService]},
   {path:'login', component:LoginComponent},
   {path:'contact', component:ContactPageComponent},
+  {path:'perfil', component:UserProfileComponent},
   {path:'', redirectTo:'home',pathMatch: 'full'},
 ]
 

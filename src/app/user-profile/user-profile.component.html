@@ -1,3 +1,82 @@
-<p>
-  user-profile works!
-</p>
+<div class="page-header">
+	<div class="header-container">
+		<h1>My Profile</h1>
+	</div>
+</div>
+<div class="container section">
+	<div class="row">
+		<div class="col">
+			<form [formGroup]="profileFrom" (submit)="editPerfil()">
+				<fieldset>
+    				<legend>Personal Information:</legend>
+    				<span class="edit" (click)="showEditForm()"><i class="fa fa-pencil"></i> Edit</span>
+    				<div class="personal-info" *ngIf="!editForm">
+    					<div class="form-group">
+	    					<label ><i class="fa fa-user-o"></i> Username</label>
+	    					<span>{{userData.username}}</span>
+	    				</div>
+	    				<div class="form-group">
+	    					<label ><i class="fa fa-user-o"></i> Full Name</label>
+	    					<span>{{userData.firstName +' '+ userData.lastName}}</span>
+	    				</div>
+	    				<div class="form-group">
+	    					<label ><i class="fa fa-envelope"></i> Email</label>
+	    					<span>{{userData.email}}</span>
+	    				</div>
+    				</div>
+    				<div class="form-edit" *ngIf="editForm">
+    					<div class="form-group">
+	    					<label for="username"><i class="fa fa-user-o"></i> Username</label>
+	    					<input type="text" class="form-control" formControlName="username" id="username">
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="firstName"><i class="fa fa-user-o"></i> First Name</label>
+	    					<input type="text" class="form-control" formControlName="firstName" id="firstName">
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="lastName"><i class="fa fa-user-o"></i> Last Name</label>
+	    					<input type="text" class="form-control" formControlName="lastName" id="lastName">
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="email"><i class="fa fa-envelope"></i> Email</label>
+	    					<input type="email" class="form-control" formControlName="email" id="email">
+	    				</div>
+	    				<div class="form-group">
+    						<input type="submit" value="Edit" class="btn-red">
+    					</div>
+	    				<!-- <div class="form-group">
+	    					<label for="teams"><i class="fa fa-users"></i> Teams</label>
+	    					<select class="form-control" formControlName="teams" id="teams">
+	    						<option *ngFor="let team of teams" value="{{team.id}}">{{team.team.name}}</option>
+	    					</select>
+	    				</div> -->
+    				</div>
+    			</fieldset>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<span (click)="showFormPassword()" class="password-title"><i class="fa fa-key"></i> Change Password</span>
+			<div class="password-change">
+				<form [formGroup]="changePasswordForm" *ngIf="showForm" (submit)="changePassword()">
+					<div class="form-group">
+    					<label for="old"><i class="fa fa-unlock-alt"></i> Current Password</label>
+    					<input type="password" class="form-control" formControlName="current" id="old" placeholder="Current Password">
+    				</div>
+    				<div class="form-group">
+    					<label for="new"><i class="fa fa-unlock"></i> New Password</label>
+    					<input type="password" class="form-control" formControlName="new" id="new" placeholder="New Password">
+    				</div>
+    				<div class="form-group">
+    					<label for="repeat"><i class="fa fa-unlock"></i> Current Password</label>
+    					<input type="password" class="form-control" formControlName="repeat" id="repeat" placeholder="Repeat Password">
+    				</div>
+    				<div class="form-group">
+    					<input type="submit" value="Change" class="btn-red">
+    				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
