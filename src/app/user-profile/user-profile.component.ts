@@ -129,7 +129,7 @@ export class UserProfileComponent implements OnInit {
       //change float image with the new one
       let preview = document.querySelector('#perfilImage');
       let reader  = new FileReader();
-      preview.src = document.getElementById("previewImg").src;
+      preview.setAttribute('src',document.getElementById("previewImg").getAttribute('src'));
       },
       error=>{
         this.showError(error)
@@ -151,7 +151,7 @@ export class UserProfileComponent implements OnInit {
     return;
   }
   reader2.onloadend = function () {
-    preview.src = reader2.result;
+    preview.setAttribute('src',reader2.result);
   }
   if (file) {
     reader.onload =this._handleReaderLoaded.bind(this);
