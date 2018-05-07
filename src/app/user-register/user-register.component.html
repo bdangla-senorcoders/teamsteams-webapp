@@ -1,65 +1,63 @@
-<div class="row">
-	<div class="col-md-12">
-		<ul>
-    		<li *ngFor="let team of teamList">{{team.name}}</li>
-  		</ul>
-		<h2>TeamSnap Form</h2>
-		<div class="form-group">
-			<select name="teamoption" class="form-control" id="teamoption" (change)="userSelection($event.target.value)">
-				<option value="" selected="">Choose an option</option>
-				<option value="create">Create Team</option>
-				<option value="join">Join Team</option>
-			</select>
-		</div>
-		<div *ngIf="showJoinTeam" class="joinTeam">
-			<form (ngSubmit)="searchTeam()">
+<div class="page-header">
+	<div class="header-container">
+		<h1>Register</h1>
+	</div>
+</div>
+<div class="container section">
+	<div class="row">
+		<div class="col">
+			<form [formGroup]="registerForm" (submit)="register()">
 				<div class="form-group">
-					<input type="text" name="teamName" class="form-control" [(ngModel)]="search">
+					<label for="userName">UserName</label>
+					<input type="text" class="form-control" id="username" placeholder="UserName" formControlName="username" [ngClass]="{'is-invalid':registerForm.get('username').invalid && registerForm.get('username').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('username').hasError('required')">UserName is Required</div>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Search</button>
-				</div>
-			</form>
-			<div *ngIf="showSearchResult" class="search-result">
-				<h3>Result for: {{search}}</h3>
-				<ul>
-		    		<li *ngFor="let team of teamList">{{team.name}}</li>
-		  		</ul>
-			</div>
-		</div>
-		<div *ngIf="showCreateTeam" class="createTeam">
-			<h3>Team Info</h3>
-			<form (ngSubmit)="createTeam()" name="myForm">
-				<div class="form-group">
-					<label for="teamName">Team Name</label>
-					<input type="text" class="form-control" id="teamName" [(ngModel)]="team.name" name="teamName" required>
-				</div>
-				<div class="form-group">
-					<label for="zipcode">Zip Code</label>
-					<input type="number" class="form-control" id="zipcode" [(ngModel)]="team.zipcode" name="zipcode">
-				</div>
-				<h3>User Info</h3>
-				<div class="form-group">
-					<label for="userName">User Name</label>
-					<input type="text" name="userName" class="form-control" id="userName" [(ngModel)]="team.userName">
-				</div>
-				<div class="form-group">
-					<label for="email">User Email</label>
-					<input type="email" name="email" class="form-control" id="email" [(ngModel)]="team.userEmail">
-				</div>
-				<div class="form-group">
-					<label for="password">User Password</label>
-					<input type="password" name="password" class="form-control" id="password" [(ngModel)]="team.userPassword">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid':registerForm.get('password').invalid && registerForm.get('password').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required')">Password is Required</div>
 				</div>
 				<div class="form-group">
 					<label for="repassword">Repeat Password</label>
-					<input type="password" name="repassword" class="form-control" id="repassword">
+					<input type="password" class="form-control" id="repassword" placeholder="Repeat Password" formControlName="repassword" [ngClass]="{'is-invalid':registerForm.get('repassword').invalid && registerForm.get('repassword').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('repassword').hasError('required')">Password is Required</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname">First Name</label>
+					<input type="text" class="form-control" id="firstname" placeholder="First Name" formControlName="firstName" [ngClass]="{'is-invalid':registerForm.get('firstName').invalid && registerForm.get('firstName').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('firstName').hasError('required')">First Name is Required</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname">Last Name</label>
+					<input type="text" class="form-control" id="lastname" placeholder="Last Name" formControlName="lastName" [ngClass]="{'is-invalid':registerForm.get('lastName').invalid && registerForm.get('lastName').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('lastName').hasError('required')">Last Name is Required</div>
+				</div>
+				<div class="form-group">
+					<label for="email">email</label>
+					<input type="email" class="form-control" id="email" placeholder="Email" formControlName="email" [ngClass]="{'is-invalid':registerForm.get('email').invalid && registerForm.get('email').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('email').hasError('required')">Email is Required</div>
+					<div class="invalid-feedback" *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').hasError('required')">Email invalid</div>
+				</div>
+				<div class="form-group">
+					<label for="teamname">Team Name</label>
+					<input type="text" class="form-control" id="teamname" placeholder="Team Name" formControlName="teamName" [ngClass]="{'is-invalid':registerForm.get('teamName').invalid && registerForm.get('teamName').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('teamName').hasError('required')">Team Name is Required</div>
+				</div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea class="form-control" id="description" placeholder="Description" formControlName="description"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="sport">Choose an sport</label>
-					<ng-select2 (valueChanged)="sportSelection($event)" [placeholder]="'Please select a sport'" [data]="sports" id="sport"></ng-select2>
+					<ng-select2 (valueChanged)="sportSelection($event)" [placeholder]="'Please select a sport'" [data]="sports" id="sport" formControlName="sport"></ng-select2>
+					<div class="invalid-feedback" *ngIf="registerForm.get('sport').hasError('required')">Sport is Required</div>
 				</div>
-				<button type="submit" class="btn btn-success">Submit</button>
+				<div class="form-group">
+					<label for="city">City</label>
+					<input type="text" class="form-control" id="city" placeholder="City" formControlName="city" [ngClass]="{'is-invalid':registerForm.get('city').invalid && registerForm.get('city').touched}">
+					<div class="invalid-feedback" *ngIf="registerForm.get('city').hasError('required')">City is Required</div>
+				</div>
+				<button class="btn-red" [ngClass]="{'noActive':registerForm.invalid}" [disabled]="registerForm.invalid">Register</button>
 			</form>
 		</div>
 	</div>

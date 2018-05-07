@@ -29,6 +29,7 @@ const appRoutes: Routes=[
   {path:'login', component:LoginComponent},
   {path:'contact', component:ContactPageComponent},
   {path:'perfil', component:UserProfileComponent},
+  {path:'register', component:UserRegisterComponent},
   {path:'', redirectTo:'home',pathMatch: 'full'},
 ]
 

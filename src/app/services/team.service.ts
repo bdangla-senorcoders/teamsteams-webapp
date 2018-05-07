@@ -45,6 +45,10 @@ export class TeamService {
     let body = JSON.stringify(data);
     return this.http.put(`${API_ENDPOINT}user/${id}`,body, this.httpOptions )
   }
+  register(data){
+    let body = JSON.stringify(data);
+    return this.http.post(`${API_ENDPOINT}user/team/`,body, {headers: new HttpHeaders({ 'Content-Type': 'application/json'})})
+  }
  //  searchTeam(teamName){
 	// return this.http.get(`${API_ENDPOINT}?name=%${teamName}%`);
  //  }

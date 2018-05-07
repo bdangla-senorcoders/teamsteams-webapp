@@ -6,13 +6,13 @@ import { CookieService } from 'ngx-cookie-service';
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const  API_ENDPOINT="http://138.68.19.227:8187/login";
+const  API_ENDPOINT="http://138.68.19.227:8187/";
 @Injectable()
 export class AuthenticationService {
 	constructor(private http:HttpClient, private cookieService: CookieService) { }
 	login(login){
 	  	let body = JSON.stringify(login);
-	    return this.http.post(API_ENDPOINT, body, httpOptions);
+	    return this.http.post(`${API_ENDPOINT}login`, body, httpOptions);
 	}
 	isLogged(){
 		return this.cookieService.check('sessionToken');
@@ -46,5 +46,9 @@ export class AuthenticationService {
 		let dataString=JSON.stringify(data);
 		this.cookieService.delete('sessionToken');
 		this.cookieService.set( 'sessionToken', dataString );
+	}
+	//check if email already exist
+	checkEmail(email){
+		return this.http.get(`${API_ENDPOINT}user/enable/${email}`, httpOptions)
 	}
 }
