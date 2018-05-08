@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import {MyGuardService} from './services/my-guard.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RegistrationBuilderComponent } from './registration-builder/registration-builder.component';
 const appRoutes: Routes=[
   {path:'home', component:HomepageComponent},
   {path:'add-player', component:AddPlayerComponent, canActivate:[MyGuardService]},
@@ -30,6 +31,7 @@ const appRoutes: Routes=[
   {path:'contact', component:ContactPageComponent},
   {path:'perfil', component:UserProfileComponent},
   {path:'register', component:UserRegisterComponent},
+  {path:'formBuilder',component:RegistrationBuilderComponent,canActivate:[MyGuardService]},
   {path:'', redirectTo:'home',pathMatch: 'full'},
 ]
 
@@ -42,6 +44,7 @@ const appRoutes: Routes=[
     LoginComponent,
     ContactPageComponent,
     UserProfileComponent,
+    RegistrationBuilderComponent,
   ],
   imports: [
     BrowserModule,

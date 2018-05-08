@@ -25,6 +25,9 @@
 			    					<label ><i class="fa fa-envelope"></i> Email</label>
 			    					<span>{{userData.email}}</span>
 			    				</div>
+			    				<div class="form-group" *ngIf="userData.role.name=='Manager'">
+			    					<a routerLink="/formBuilder" class="linkRegisterForm" ><i class="fa fa-plus"></i> Register a Form</a>
+			    				</div>
 		    				</div>
 	    					<div class="form-edit" *ngIf="editForm">
 		    					<div class="form-group">
